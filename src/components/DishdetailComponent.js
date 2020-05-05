@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import {
   Card,
   CardImg,
-  CardImgOverlay,
   CardText,
   CardBody,
-  CardTitle,
 } from "reactstrap";
 class DishDetail extends Component {
   constructor(props) {
@@ -30,10 +28,42 @@ class DishDetail extends Component {
       return <div></div>;
     }
   }
+  renderComments(dish) {
+    if (dish != null) {
+      return (
+        <div className="col-12 col-md-11 m-1" >
+          <Card>
+            <h4>Comments</h4>
+            <CardText>{dish.comments["0"].comment}</CardText>
+            <CardText>
+              -- {dish.comments["0"].author} , {dish.comments["0"].date.slice(0,10)}
+            </CardText>
+            <CardText>{dish.comments["1"].comment}</CardText>
+            <CardText>
+              -- {dish.comments["1"].author} , {dish.comments["1"].date.slice(0,10)}
+            </CardText>
+            <CardText>{dish.comments["2"].comment}</CardText>
+            <CardText>
+              -- {dish.comments["2"].author} , {dish.comments["2"].date.slice(0,10)}
+            </CardText>
+            <CardText>{dish.comments["3"].comment}</CardText>
+            <CardText>
+              -- {dish.comments["3"].author} , {dish.comments["3"].date.slice(0,10)}
+            </CardText>
+          </Card>
+        </div>
+      );
+    } else {
+      return <div></div>;
+    }
+  }
   render() {
     return (
       <div className="container">
-        <div className="row">{this.renderDish(this.props.selectedDish)}</div>
+        <div className="row">
+          {this.renderDish(this.props.selectedDish)}
+          <div>{this.renderComments(this.props.selectedDish)}</div>
+        </div>
       </div>
     );
   }
