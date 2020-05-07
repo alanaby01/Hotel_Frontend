@@ -23,7 +23,7 @@ export const DISHES =
         {
         id: 2,
         name:'Vadonut',
-        image: '/assets/images/vadonut.png',
+        image: 'assets/images/vadonut.png',
         category: 'appetizer',
         label:'New',
         price:'1.99',
