@@ -23,6 +23,16 @@ class Contact extends Component {
       contactType: 'Tel: ',
       message: ''
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+  handleInputChange(event){
+
+  }
+  handleSubmit(event){
+    console.log("Current state is: "+JSON.stringify(this.state));
+    alert("Current state is: "+JSON.stringify(this.state));
+    event.preventDefault();
   }
   render () {
     return (
@@ -90,7 +100,7 @@ class Contact extends Component {
             <h3>Send Us Your Feedback</h3>
           </div>
           <div className='col-12 col-md-9'>
-            <Form>
+            <Form onSubmit={this.handleSubmit}>
               <FormGroup row>
                 <Label htmlFor='firstname' md={2}>
                   First Name
@@ -155,11 +165,30 @@ class Contact extends Component {
                     </Label>
                   </FormGroup>
                 </Col>
-                <Col md={{size:3, offset:1}}>
+                <Col md={{size:3, offset:2}}>
                   <Input type="select" name="contactType" value={this.state.contactType} >
                     <option>Tel.</option>
                     <option>Email</option>
                   </Input>
+                </Col>
+              </FormGroup>
+              <FormGroup row>
+                <Label htmlFor='feedback' md={2}>
+                  Your Feedback
+                </Label>
+                <Col md={10}>
+                  <Input
+                    type='textarea'
+                    id='message'
+                    name='message'
+                    rows='12'
+                    value={this.state.message}
+                  ></Input>
+                </Col>
+              </FormGroup>
+              <FormGroup row>
+                <Col md={{size:10, offset:2}}>
+                  <Button type="submit" color="primary">Send Feedback</Button>
                 </Col>
               </FormGroup>
             </Form>
